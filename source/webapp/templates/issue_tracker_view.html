@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Issue tracker {{ is_tracker.pk }}{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'issue_tracker_add' %}">Создание статьи</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'issue_tracker_update_view' is_tracker.pk %}">Редактировать</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'issue_tracker_delete_view' is_tracker.pk %}">Удалить</a>
+    </li>
+{% endblock %}
+{% block content %}
+    <h4>{{ is_tracker.summary }}</h4>
+    <br>
+    <h3>Статусы</h3>
+    {% for status in is_tracker.statuses.all %}
+        <p>{{ status.name }}</p>
+    <br>
+    <h3>Типы</h3>
+    {% for type in is_tracker.types.all %}
+        <p>{{ type.name }}</p>
+    {% endfor %}
+{% endblock %}

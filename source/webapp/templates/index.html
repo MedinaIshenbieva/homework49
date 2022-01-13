@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Трекер задач</h1>
+    {% for is_tracker in issue_tracker %}
+        <h3>{{ is_tracker.title }}</h3>
+        <p><a href="{% url 'issue_tracker_view' is_tracker.pk %}">Подробнее...</a></p>
+        <p><a href="{% url 'issue_tracker_update_view' is_tracker.pk %}">Редактировать</a></p>
+        <p><a href="{% url 'issue_tracker_delete_view' is_tracker.pk %}">Удалить</a></p>
+    {% endfor %}
+{% endblock %}
