@@ -20,7 +20,7 @@
         <p>{{ status.name }}</p>
     <br>
     <h3>Типы</h3>
-    {% for type in is_tracker.types.all %}
-        <p>{{ type.name }}</p>
+    {% for type in task.types.all %}
+        {{ type.name }}{% if not forloop.last %}, {% else %}. {% endif %}
     {% endfor %}
 {% endblock %}
